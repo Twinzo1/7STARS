@@ -19,7 +19,7 @@ jobs:
 
     - name: 开始爬取
       run: |
-        python3 run qxv.py
+        python3 qxv.py
         
     - name: 开始上传
       env:
