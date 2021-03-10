@@ -33,9 +33,11 @@ def get_lottery_by_id(lottery_id):
 def get_lottery_num(periods=60, get_num=True):
     periods -= 1
     data_list = []
-    response = requests.get("http://kaijiang.500.com/shtml/qxc/")
+    response = requests.get("https://zst.aicai.com/qxc/jbzs/?maxsize=100")
+#     response = requests.get("http://kaijiang.500.com/shtml/qxc/")
     response.encoding = response.apparent_encoding
     doc = response.text
+    print(doc)
     soup = BeautifulSoup(doc, "lxml")
     per_str = soup.find_all(class_='iSelectList')
     latest_str = soup.find_all(class_='cfont2')
