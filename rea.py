@@ -40,8 +40,8 @@ def data2pic(data):
     # sub0.plot(y, x0)
     sub3.plot(y, x3)
     sub4.plot(y, x4)
-    # plt.savefig('./qxc.jpg')
-    plt.show()
+    plt.savefig('~/qixing.jpg')
+#     plt.show()
 
 
 if __name__ == "__main__":
