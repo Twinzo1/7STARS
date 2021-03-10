@@ -14,11 +14,11 @@ jobs:
 
     - name: Init
       run: |
-        pip install requirements.txt
+        pip3 install requirements.txt
 
     - name: 开始爬取
       run: |
-        python run qxv.py
+        python3 run qxv.py
         
     - name: 开始上传
       env:
