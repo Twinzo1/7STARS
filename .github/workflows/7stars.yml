@@ -14,7 +14,7 @@ jobs:
 
     - name: Init
       run: |
-        pip3 install requirements.txt
+        pip3 -r install requirements.txt
 
     - name: 开始爬取
       run: |
