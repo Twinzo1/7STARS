@@ -1,0 +1,37 @@
+name: 七星拳
+
+on:
+  workflow_dispatch:
+#  schedule:
+#    - cron: '0 0 */9 * *'
+
+jobs:
+  ibm-cloud-restart:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Init
+      run: |
+        pip install requirements.txt
+
+    - name: 开始爬取
+      run: |
+        python run qxv.py
+        
+    - name: 开始上传
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
+      run: |
+        git clone https://github.com/Twinzo1/7STARS.git ~/stars
+        cd ~/stars
+        sudo git remote set-url origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY"
+        mv ~/qixing.jpg ~/stars/image/`date +%Y%m%d%H%M%S`.jpg
+        git config --global user.email "1282055288@qq.com"
+        git config --global user.name "Twinzo1"
+        git add .
+        git commit -m "update `date +%Y%m%d%H%M%S`"
+        sudo git push origin "${SOURCE_BRANCH}:${DESTINATION_BRANCH}" --force 
+
+        
